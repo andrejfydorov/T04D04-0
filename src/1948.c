@@ -4,12 +4,21 @@
 int mod(int a, int b);
 int isProstoe(int a);
 int simpleNOD(int n);
+int isNumber(int n);
 
 int main()
 {
     int n;
     printf("Введите число");
-    scanf("%d", &n);
+    //scanf("%d", &n);
+
+    if (scanf("%d", &n) != 1)
+    {
+        printf("n/a");
+        return 0;
+    }
+    
+
     n = fabs((float)n);
 
     printf("----%d----", simpleNOD(n));
@@ -70,4 +79,6 @@ int isProstoe(int a) {
     }
     return res;
 }
+
+
 
