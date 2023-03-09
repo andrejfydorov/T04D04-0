@@ -10,7 +10,6 @@ int main()
 {
     int n;
     printf("Введите число");
-    //scanf("%d", &n);
 
     if (scanf("%d", &n) != 1)
     {
@@ -18,13 +17,9 @@ int main()
         return 0;
     }
     
-
     n = fabs((float)n);
 
-    printf("----%d----", simpleNOD(n));
-
-    //printf("%d", isProstoe(n));
-    //printf("%d", mod(n, 13));
+    printf("%d", simpleNOD(n));
 
     return 0;
 }
@@ -33,7 +28,7 @@ int simpleNOD(int n){
     int p;
     int res = 0;
     for (p = n - 1; p > 0; p--) {
-        printf("%d %d\n", n, p);
+        //printf("%d %d\n", n, p);
         int m = mod(n, p);
         if (m == 0) {
             
