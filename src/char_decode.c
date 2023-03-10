@@ -4,7 +4,7 @@
 #include <string.h>
 
 void encode(){
-
+    printf("Введите: ");
     char c;
     while ((c = getchar()) != '\n'){
         
@@ -22,24 +22,19 @@ void encode(){
 
 void decode(){
 
-    char c;
-
     printf("Введите: ");
 
-    char c;
-    char str[10];
-    int i = 0;
-    while ((c = getchar()) != '\n'){
-        
+    int c;
+
+    do{
+        scanf("%x", &c);
         if(c == ' '){
-            printf("%s ", str);
+            printf("%c ", c);
             continue;
         }
         
-        str[i] = c;
-        i++;
     
-    } 
+    } while ((char)c!= '\n');
     
 }
 

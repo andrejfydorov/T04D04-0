@@ -13,21 +13,51 @@ double quad_giperbol(double x){
     return 1 / pow(x, 2);
 }
 
-int main()
-{
-    for (size_t i = 0; i < 42; i++)
+int main() {
+    FILE * file = fopen("data/door_data.txt", "w");
+    if(file == NULL)
     {
-        double x = -M_PI + i * (2 * M_PI / 41.0);
-        double v_A = varzyera_Anyezi(x);
-        double l_B = varzyera_Anyezi(x);
-        double q_q = quad_giperbol(x);
-        v_A = isnan(v_A) == 0? v_A : '-';
-        l_B = isnan(l_B) == 0? l_B : '-';
-        q_q = isnan(q_q) == 0? q_q : '-';
+        printf("Error occured while opening file");
+        return 1;
+    }
 
-        printf("%.7f | %.7f | %.7f | %.7f\n", x, v_A, l_B, q_q);
+    for (double x = -M_PI; x <= M_PI; x += (2 * M_PI) / 41.0)
+    {
+        double v_A = varzyera_Anyezi(x);
+        double l_B = lemniscate_Bernulli(x);
+        double q_q = quad_giperbol(x);
+
+
+        fprintf(file, "%lf", x);
+        fprintf(file, " | ");
+
+        if(!isnan(v_A))
+            fprintf(file, "%.7lf", v_A);
+        else           
+            fprintf(file, " - ");
+        
+        fprintf(file, " | ");
+
+        if(!isnan(l_B)) 
+            fprintf(file, "%.7lf", l_B);            
+        else
+            fprintf(file, " - ");          
+
+        fprintf(file, " | ");
+
+        if(!isnan(q_q)) 
+            fprintf(file,  "%.7lf", q_q);
+        else
+            fprintf(file, " - ");            
+
+
+        fprintf(file, "\n");
+
 
     }
+
+    fclose(file);
+
  
     return 0;
 }
