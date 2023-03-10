@@ -2,8 +2,8 @@
 Программа
 */
 
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
 int mod(int a, int b);
 int isProstoe(int a);
